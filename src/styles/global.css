@@ -1,0 +1,149 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Noto+Sans+KR:wght@300;400;500&display=swap');
+
+:root {
+  --bg: #f5f0e8;
+  --bg2: #ede8df;
+  --white: #fdfaf5;
+  --ink: #1a1714;
+  --ink2: #4a453f;
+  --ink3: #9a9189;
+  --accent: #e8440a;
+  --accent2: #ff6b3d;
+  --navy: #1c2b4a;
+  --navy2: #2a3f6a;
+  --card: #ffffff;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: 400;
+  overflow-x: hidden;
+}
+
+/* 공통 버튼 */
+.btn-main {
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding: 0.9rem 2.2rem;
+  background: var(--accent);
+  color: var(--white);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  letter-spacing: 0.02em;
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+}
+.btn-main:hover {
+  background: #c73508;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(232,68,10,0.25);
+}
+
+.btn-outline {
+  font-size: 0.85rem;
+  font-weight: 400;
+  padding: 0.9rem 1.75rem;
+  background: transparent;
+  color: var(--ink2);
+  border: 1px solid rgba(26,23,20,0.2);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s;
+}
+.btn-outline:hover {
+  border-color: var(--ink);
+  color: var(--ink);
+}
+
+.btn-navy {
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding: 0.9rem 2.2rem;
+  background: var(--navy);
+  color: var(--white);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+}
+.btn-navy:hover {
+  background: var(--navy2);
+  transform: translateY(-2px);
+}
+
+/* 공통 섹션 */
+.wrap {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 6rem 2.5rem;
+}
+.wrap-sm {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 6rem 2.5rem;
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1.25rem;
+}
+.eyebrow::before {
+  content: '';
+  display: block;
+  width: 20px;
+  height: 1px;
+  background: var(--accent);
+}
+
+.section-h2 {
+  font-family: 'Libre Baskerville', serif;
+  font-size: clamp(1.7rem, 3.5vw, 2.8rem);
+  line-height: 1.18;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  max-width: 600px;
+  margin-bottom: 3rem;
+}
+.section-h2 em {
+  font-style: italic;
+  color: var(--accent);
+}
+
+/* 공통 애니메이션 */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes ticker {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+@keyframes floatY {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-8px); }
+}
+@keyframes rotateSlow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@media (max-width: 900px) {
+  .wrap, .wrap-sm { padding: 4rem 1.5rem; }
+}
