@@ -19,6 +19,41 @@ function Result({ result }) {
     )
   }
 
+  const handleCopyResult = () => {
+    const text = `
+  📋 분석 정보
+  지원 회사 : ${result.company}
+  포지션    : ${result.position}
+  JD 매칭 점수 : ${result.matchScore}
+
+  🔑 반영된 키워드 (${result.keywords.hit.length}개)
+  ${result.keywords.hit.join(', ')}
+
+  누락된 키워드 (${result.keywords.miss.length}개)
+  ${result.keywords.miss.join(', ')}
+
+  ✏️ 주요 수정 내용
+  ${result.diffs.map((d, i) => `
+  ${i + 1}. [${d.section}]
+    수정 전 : ${d.before}
+    수정 후 : ${d.after}
+    이유 : ${d.reason}
+  `).join('')}
+
+  💪 강점
+  ${result.strengths.map(s => `• ${s}`).join('\n')}
+
+  ⚠️ 보완 필요 항목
+  ${result.weaknesses.map(w => `${w.level === 'danger' ? '🔴' : '🟡'} ${w.text}`).join('\n')}
+
+  🏢 이 회사 지원 포인트
+  ${result.companyPoint}
+    `.trim()
+
+    navigator.clipboard.writeText(text)
+    alert('클립보드에 복사되었습니다!')
+  }
+
   // optimizedResume에서 수정된 부분 하이라이트 처리
   const renderHighlightedResume = () => {
     if (!result.optimizedResume || !result.diffs) return result.optimizedResume
@@ -131,6 +166,12 @@ function Result({ result }) {
                 <span style={s.legendDot} />
                 <span style={s.legendText}>수정된 부분 — 마우스를 올리면 수정 이유가 표시됩니다</span>
               </div>
+              <button
+                style={s.dlBtn}
+                onClick={handleCopyResult}
+              >
+                결과 복사
+              </button>
               <button style={s.dlBtn}>최종본 다운로드</button>
             </div>
 
