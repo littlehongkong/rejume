@@ -189,7 +189,7 @@ const handleStart = async () => {
         {step === 1 && (
           <div>
             <p style={s.stepTitle}>이력서를 올려주세요</p>
-            <p style={s.stepDesc}>PDF, Word, 또는 직접 붙여넣기 모두 가능합니다.</p>
+            <p style={s.stepDesc}>Word 문서 또는 직접 붙여넣기 모두 가능합니다.</p>
 
             <div
               style={fileName ? { ...s.uploadZone, ...s.uploadZoneFilled } : s.uploadZone}
@@ -204,7 +204,7 @@ const handleStart = async () => {
                 <>
                   <div style={s.uploadIcon}>↑</div>
                   <p style={s.uploadTitle}>파일을 드래그하거나 클릭해서 업로드</p>
-                  <p style={s.uploadSub}>PDF · DOCX · 최대 10MB</p>
+                  <p style={s.uploadSub}>DOCX · 최대 10MB</p>
                 </>
               )}
             </div>
